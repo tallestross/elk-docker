@@ -1,12 +1,11 @@
-version: '3'
+version: '2'
 
 services:
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
-    volumes:
+    #volumes:
     #  - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-       - /Users/elk/storage:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -39,6 +38,5 @@ services:
       - elk
     depends_on:
       - elasticsearch
-
-networks:
-    elk:
+  elk:
+    driver: bridge
